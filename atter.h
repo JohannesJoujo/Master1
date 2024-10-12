@@ -5,12 +5,17 @@
 #ifndef ATTER_H
 #define ATTER_H
 
+#include <set>
 #include <vector>
 struct node {
+    node(char type) {
+        this->type=type;
+        this->hasChild=hasChild;
+    }
     char type;
     bool hasChild=false;
-    std::vector<char> childVec;
-    void addChildren(std::vector<char>children) {
+    std::vector<node> childVec;
+    void addChildren(std::vector<node>children) {
         for (auto child: children) {
             childVec.push_back(child);
         }
@@ -18,7 +23,7 @@ struct node {
 };
 class atter {
 public:
-std::vector<std::vector<char>>mainChildVec;
+std::vector<std::vector<node>>mainChildVec;
 
 
 
