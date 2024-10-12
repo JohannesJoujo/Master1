@@ -1,0 +1,3 @@
+/Users/johannesjoujo/CLionProjects/Master1/cmake-build-debug/CMakeFiles/Master1.dir
+/Users/johannesjoujo/CLionProjects/Master1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/johannesjoujo/CLionProjects/Master1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
