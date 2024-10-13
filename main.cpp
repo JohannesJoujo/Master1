@@ -1,5 +1,6 @@
 #include <iostream>
 #include "atter.h"
+void testTwoStructures(atter& first, atter& second);
 int main() {
     node k1('k',"root",1);
     k1.hasChild=true;
@@ -75,7 +76,10 @@ int main() {
 
     atter firstStructure;
     atter secondStructure;
+    atter thirdStructure;
+
     firstStructure.mainChildVec.push_back(root.childVec);
+    thirdStructure.mainChildVec.push_back(root.childVec);
     secondStructure.mainChildVec.push_back(secondRoot.childVec);
 
     std::cout<<firstStructure.mainChildVec[0].size()<<std::endl;
@@ -89,19 +93,38 @@ int main() {
     }
     std::cout<<std::endl;
     std::cout<<std::endl;
+    for (auto children :thirdStructure.mainChildVec) {
+        for (auto child: children) {
+            if(child.type=='n'){std::cout<<"-------------------------------";}
+            std::cout<<child.type<< " " << child.nodenumber<<" parent is: "<<child.hasParent<<std::endl;
+        }
+    }
+/*
     for (auto children :secondStructure.mainChildVec) {
         for (auto child: children) {
             if(child.type=='n'){std::cout<<"-------------------------------";}
             std::cout<<child.type<< " " << child.nodenumber<<" parent is: "<<child.hasParent<<std::endl;
         }
     }
+*/
     std::cout<<std::endl;
     std::cout<<std::endl;
-
-    if(firstStructure.ChecStructure(firstStructure.mainChildVec,secondStructure.mainChildVec)) {
+    testTwoStructures(firstStructure,secondStructure);
+    testTwoStructures(firstStructure,thirdStructure);
+/*
+    if(firstStructure.ChecStructure(firstStructure.mainChildVec,thirdStructure.mainChildVec)) {
         std::cout<<"The structures are the same"<<std::endl;
     } else {
         std::cout<<"The structures are not the same"<<std::endl;
     }
+    */
     return 0;
+}
+
+void testTwoStructures(atter& first, atter& second) {
+    if(first.ChecStructure(first.mainChildVec,second.mainChildVec)) {
+        std::cout<<"The structures are the same"<<std::endl;
+    } else {
+        std::cout<<"The structures are not the same"<<std::endl;
+    }
 }

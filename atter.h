@@ -45,13 +45,16 @@ std::vector<std::vector<node>>mainChildVec;
                     return false;
                 }
                 if(vec1[i][j].nodenumber!=vec2[i][j].nodenumber) {
+                    std::cout<<j<<std::endl;
                     return false;
                 }
                 if(vec1[i][j].hasParent!=vec2[i][j].hasParent) {
+                    std::cout<<j<<std::endl;
                     return false;
                 }
             }
         }
+        return true;
     }
 
 
