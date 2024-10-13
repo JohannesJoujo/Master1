@@ -5,19 +5,29 @@
 #ifndef ATTER_H
 #define ATTER_H
 
-#include <set>
+#include <iostream>
+#include <queue>
 #include <vector>
 struct node {
-    node(char type) {
-        this->type=type;
-        this->hasChild=hasChild;
-    }
+    node(char type,std::string hasParent ,int nodenumber):type(type),hasParent(hasParent),nodenumber(nodenumber){}
+    std::vector<node>childrenOfChild;
+    int nodenumber;
     char type;
+    std::string hasParent;
     bool hasChild=false;
     std::vector<node> childVec;
     void addChildren(std::vector<node>children) {
         for (auto child: children) {
             childVec.push_back(child);
+            if(child.hasChild==true) {
+                childrenOfChild.push_back(child);
+            }
+        }
+        //std::cout<<"hej"<<std::endl;
+    }
+    void print() {
+        for(int i=0;i<childrenOfChild.size();i++) {
+            std::cout<<childrenOfChild[i].type<< childrenOfChild[i].nodenumber<<std::endl;
         }
     }
 };
