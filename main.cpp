@@ -27,6 +27,10 @@ int main() {
 
     node root('k',"none",0);
     root.hasChild=true;
+    std::vector<node>rootvec;
+    rootvec.push_back(root);
+    root.addChildren(rootvec);
+
     root.addChildren(brakervec);
     root.addChildren(rootschildren);
     root.addChildren(brakervec);
@@ -61,7 +65,11 @@ int main() {
     node si1('i',"sk2",6);
     secRootThirdChildren.push_back(si1);
 
+    std::vector<node>secRootVec;
+    secRootVec.push_back(secondRoot);
+
     secondRoot.addChildren(brakervec);
+    secondRoot.addChildren(secRootVec);
     secondRoot.addChildren(brakervec);
     secondRoot.addChildren(secRootChildren);
     secondRoot.addChildren(brakervec);
@@ -85,6 +93,8 @@ int main() {
             std::cout<<child.type<< " " << child.nodenumber<<" parent is: "<<child.hasParent<<std::endl;
         }
     }
+    std::cout<<std::endl;
+    std::cout<<std::endl;
     for (auto children :secondStructure.mainChildVec) {
         for (auto child: children) {
             if(child.type=='n'){std::cout<<"-------------------------------";}
