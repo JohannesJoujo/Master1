@@ -31,27 +31,23 @@ int main() {
     rootvec.push_back(root);
     root.addChildren(rootvec);
 
-    root.addChildren(brakervec);
     root.addChildren(rootschildren);
-    root.addChildren(brakervec);
     root.addChildren(secondBorn);
-    root.addChildren(brakervec);
     root.addChildren(thirdBorn);
-    root.addChildren(brakervec);
 
 
     node secondRoot('k',"none",0);
     secondRoot.hasChild=true;
 
     std::vector<node> secRootChildren;
-    node sm1('m',"secondRoot",1);
+    node sm1('m',"root",1);
     secRootChildren.push_back(sm1);
 
-    node sk1('k',"secondRoot",2);
+    node sk1('k',"root",2);
     sk1.hasChild=true;
     secRootChildren.push_back(sk1);
 
-    node sk2('k',"secondRoot",3);
+    node sk2('k',"root",3);
     sk2.hasChild=true;
     secRootChildren.push_back(sk2);
 
@@ -68,15 +64,10 @@ int main() {
     std::vector<node>secRootVec;
     secRootVec.push_back(secondRoot);
 
-    secondRoot.addChildren(brakervec);
     secondRoot.addChildren(secRootVec);
-    secondRoot.addChildren(brakervec);
     secondRoot.addChildren(secRootChildren);
-    secondRoot.addChildren(brakervec);
     secondRoot.addChildren(secRootSecondChildren);
-    secondRoot.addChildren(brakervec);
     secondRoot.addChildren(secRootThirdChildren);
-    secondRoot.addChildren(brakervec);
 
 
 
@@ -86,6 +77,9 @@ int main() {
     atter secondStructure;
     firstStructure.mainChildVec.push_back(root.childVec);
     secondStructure.mainChildVec.push_back(secondRoot.childVec);
+
+    std::cout<<firstStructure.mainChildVec[0].size()<<std::endl;
+    std::cout<<secondStructure.mainChildVec[0].size()<<std::endl;
 
     for (auto children :firstStructure.mainChildVec) {
         for (auto child: children) {
@@ -100,6 +94,14 @@ int main() {
             if(child.type=='n'){std::cout<<"-------------------------------";}
             std::cout<<child.type<< " " << child.nodenumber<<" parent is: "<<child.hasParent<<std::endl;
         }
+    }
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    if(firstStructure.ChecStructure(firstStructure.mainChildVec,secondStructure.mainChildVec)) {
+        std::cout<<"The structures are the same"<<std::endl;
+    } else {
+        std::cout<<"The structures are not the same"<<std::endl;
     }
     return 0;
 }
