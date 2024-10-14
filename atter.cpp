@@ -8,17 +8,13 @@
 void node::addChildren(std::vector<node> children) {
     for (auto child: children) {
         childVec.push_back(child);
-        //lägger till barnen till föräldrarna
-        if(child.hasChild==true) {
-            childrenOfChild.push_back(child);
-        }
     }
 }
 
 bool atter::ChecStructure(std::vector<atter>&allStructures) {
+    std::vector<std::vector<node>>vec1;
+    std::vector<std::vector<node>>vec2;
     for(int i=0;i<allStructures.size();i++) {
-        std::vector<std::vector<node>>vec1;
-        std::vector<std::vector<node>>vec2;
         //kommer att fungera för udda antal strukturer i vectorn
         if(allStructures[i+1].mainChildVec.empty()) {
             continue;

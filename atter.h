@@ -10,7 +10,6 @@
 #include <vector>
 struct node {
     node(char type,std::string hasParent ,int nodenumber):type(type),hasParent(hasParent),nodenumber(nodenumber){}
-    std::vector<node>childrenOfChild;
     int nodenumber;
     char type;
     std::string hasParent;
