@@ -21,7 +21,7 @@ struct node {
 class atter {
 public:
 std::vector<std::vector<node>>mainChildVec;
-    bool ChecStructure(std::vector<std::vector<node>>& vec1, std::vector<std::vector<node>>& vec2);
+    bool ChecStructure(std::vector<atter>&allStructures);
 };
 
 

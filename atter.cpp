@@ -8,28 +8,39 @@
 void node::addChildren(std::vector<node> children) {
     for (auto child: children) {
         childVec.push_back(child);
+        //lägger till barnen till föräldrarna
         if(child.hasChild==true) {
             childrenOfChild.push_back(child);
         }
     }
 }
 
-bool atter::ChecStructure(std::vector<std::vector<node> > &vec1, std::vector<std::vector<node> > &vec2) {
-    if(vec1[0].size()!=vec2[0].size()) {
-        return false;
-    }
-    for(int i=0;i<vec1.size();i++) {
-        for(int j=0;j<vec1[i].size();j++) {
-            if(vec1[i][j].type!=vec2[i][j].type) {
-                return false;
-            }
-            if(vec1[i][j].nodenumber!=vec2[i][j].nodenumber) {
-                std::cout<<j<<std::endl;
-                return false;
-            }
-            if(vec1[i][j].hasParent!=vec2[i][j].hasParent) {
-                std::cout<<j<<std::endl;
-                return false;
+bool atter::ChecStructure(std::vector<atter>&allStructures) {
+    for(int i=0;i<allStructures.size();i++) {
+        std::vector<std::vector<node>>vec1;
+        std::vector<std::vector<node>>vec2;
+        //kommer att fungera för udda antal strukturer i vectorn
+        if(allStructures[i+1].mainChildVec.empty()) {
+            continue;
+        }
+        vec1=allStructures[i].mainChildVec;
+        vec2=allStructures[i+1].mainChildVec;
+        //bace case on de har olika storlek så är de olika.
+        if(vec1[0].size()!=vec2[0].size()) {
+            return false;
+        }
+        //kollar om de har samma struktur
+        for(int k=0;k<vec1.size();k++) {
+            for(int j=0;j<vec1[i].size();j++) {
+                if(vec1[k][j].type!=vec2[k][j].type) {
+                    return false;
+                }
+                if(vec1[k][j].nodenumber!=vec2[k][j].nodenumber) {
+                    return false;
+                }
+                if(vec1[k][j].hasParent!=vec2[k][j].hasParent) {
+                    return false;
+                }
             }
         }
     }

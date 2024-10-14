@@ -1,6 +1,6 @@
 #include <iostream>
 #include "atter.h"
-void testTwoStructures(atter& first, atter& second);
+void testALLStructures(std::vector<atter>&allStructures);
 void printVec(atter &atten);
 int main() {
     //creating the nodes for the first structure
@@ -104,23 +104,28 @@ int main() {
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    //kör testet för att se om strukturerna är lika
-    testTwoStructures(firstStructure,secondStructure);
-    testTwoStructures(firstStructure,thirdStructure);
+    std::vector<atter>allStructures;
+    allStructures.push_back(firstStructure);
+    allStructures.push_back(secondStructure);
+    allStructures.push_back(thirdStructure);
+
+    //kör testet för att se om strukturer i vectorn är lika
+    testALLStructures(allStructures);
+
     return 0;
 }
 void printVec(atter& atten) {
     for (auto children :atten.mainChildVec) {
         for (auto child: children) {
-            if(child.type=='n'){std::cout<<"-------------------------------";}
             std::cout<<child.type<< " " << child.nodenumber<<" parent is: "<<child.hasParent<<std::endl;
         }
     }
 }
-void testTwoStructures(atter& first, atter& second) {
-    if(first.ChecStructure(first.mainChildVec,second.mainChildVec)) {
-        std::cout<<"The structures are the same"<<std::endl;
+void testALLStructures(std::vector<atter>&allStructures) {
+    atter test;
+    if(test.ChecStructure(allStructures)) {
+        std::cout<<"Alla ätter har samma structur"<<std::endl;
     } else {
-        std::cout<<"The structures are not the same"<<std::endl;
+        std::cout<<"Alla ätter har inte samma structur"<<std::endl;
     }
 }
